@@ -1,0 +1,86 @@
+#!/usr/bin/perl -Wall
+#
+# A little script to generate linkdef files for each of the 
+# classes which needs a ROOT dictionary.
+# SPW
+
+$argCount = $#ARGV + 1;
+
+if($argCount < 1){
+    print "You need an argument!";
+}
+
+foreach $argNum (0 .. $#ARGV) 
+{
+    my $arg = $ARGV[$argNum];
+    
+    if($arg =~ /Dict.cxx/){
+        
+        $arg =~ s/Dict.cxx//;
+        
+        my $fname = "include/UC_LinkDef.h";
+        
+#        print "linkdefmaker args:   $arg";
+        if($arg =~ "IU_HKFrames"){
+            open(OPF, ">$fname");
+            print OPF "#ifdef __CINT__";
+            print OPF "#pragma link off all globals;";
+            print OPF "#pragma link off all classes;";
+            print OPF "#pragma link off all functions;";
+            print OPF "#pragma link C++ nestedclasses;";
+            print OPF "#pragma link C++ frameHeader;";
+            print OPF "#pragma link C++ nestedtypedefs;";
+            print OPF "#pragma link C++ class HKSummaryFrame0+;";
+            print OPF "#pragma link C++ class HKFrame1+;";
+            print OPF "#pragma link C++ class HKFrame2+;";
+            print OPF "#pragma link C++ class HKFrame3+;";
+            print OPF "#pragma link C++ class HKFrame10+;";
+            print OPF "#pragma link C++ class HKFrame20+;";
+            print OPF "#pragma link C++ class HKFrame40+;";            
+	    print OPF "#pragma link C++ class HKFrame50+;";
+	    print OPF "#pragma link C++ class HKFrame60+;";
+            print OPF "#endif";
+            close(OPF);
+	}
+        elsif(1){
+            open(OPF, ">$fname");
+            print OPF "#ifdef __CINT__";
+            print OPF "#pragma link off all globals;";
+            print OPF "#pragma link off all classes;";
+            print OPF "#pragma link off all functions;";
+            print OPF "#pragma link C++ nestedclasses;";
+            print OPF "#pragma link C++ frameHeader;";
+            print OPF "#pragma link C++ nestedtypedefs;";
+            print OPF "#pragma link C++ class $arg+;";
+            # Add vectors here
+            if($arg =~ "tubePair" || $arg =~ "SelectionPair" || $arg =~ "TimeCluster" ) {
+                print OPF "#pragma link C++ class std::vector<$arg>+;";
+            }               
+            if($arg =~ "SpaceCluster" ) {
+                print OPF "#pragma link C++ class std::vector<$arg>+;";
+                print OPF "#pragma link C++ class std::vector<$arg,allocator<$arg> >::iterator+;";
+
+            }               
+            if($arg =~ "HitSummary" ) {
+                print OPF "#pragma link C++ class std::vector<$arg>+;";
+            }               
+
+            print OPF "#endif";
+            close(OPF);
+        } else {
+            ## Use this for debugging.
+            print "#ifdef __CINT__";
+            print "#pragma link off all globals;";
+            print "#pragma link off all classes;";
+            print "#pragma link off all functions;";
+            print "#pragma link C++ nestedclasses;";
+            print "#pragma link C++ nestedtypedefs;";
+            print "#pragma link C++ class $arg+;";
+            print "#endif";
+        }
+    }
+}
+
+
+
+

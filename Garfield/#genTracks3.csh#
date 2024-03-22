@@ -1,0 +1,48 @@
+#!/bin/csh
+
+setenv DCSimNtrack 100
+setenv DCSimtrackx 6.0
+setenv DCSimtrackang 0.0
+
+rm  signal6_Be.out
+setenv DCSimOutFile "signal6_Be.root"
+taskset 0x20 ./smalljet >> signal6.out &
+
+rm  signal7.out
+setenv DCSimOutFile "signal7.root"
+taskset 0x40 ./smalljet >> signal7.out &
+
+rm  signal8.out
+setenv DCSimOutFile "signal8.root"
+taskset 0x80 ./smalljet >> signal8.out &
+
+rm  signal9.out
+setenv DCSimOutFile "signal9.root"
+taskset 0x100 ./smalljet >> signal9.out &
+
+rm  signal10.out
+setenv DCSimOutFile "signal10.root"
+taskset 0x200  ./smalljet >> signal10.out &
+
+rm  signal11.out
+setenv DCSimOutFile "signal11.root"
+taskset 0x400 ./smalljet >> signal11.out &
+
+rm  signal12.out
+setenv DCSimOutFile "signal12.root"
+taskset 0x800 ./smalljet >> signal12.out &
+
+rm  signal13.out
+setenv DCSimOutFile "signal13.root"
+taskset 0x1000 ./smalljet >> signal13.out &
+
+rm  signal14.out
+setenv DCSimOutFile "signal14.root"
+taskset 0x2000 ./smalljet >> signal14.out &
+
+rm  signal15.out
+setenv DCSimOutFile "signal15.root"
+taskset 0x4000 ./smalljet >> signal15.out &
+
+
+
