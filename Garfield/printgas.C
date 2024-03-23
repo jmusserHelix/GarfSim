@@ -40,9 +40,9 @@ int main(int argc, char * argv[]) {
  // Set the temperature [K] and pressure [Torr]
   gas->SetTemperature(temperature);
   gas->SetPressure(pressure);
-  gas->SetComposition("co2", 80, "ic4h10", 20);
+  gas->SetComposition("co2", 90, "AR", 10);
 
-  gas->LoadGasFile("co2_80_iso_20.gas");
+  gas->LoadGasFile("co2_90_AR_10_T273.gas");
   gas->LoadIonMobility("/home/musser/helix/garfield/Data/IonMobility_CO2+_CO2.txt");
   gas->PrintGas();
 

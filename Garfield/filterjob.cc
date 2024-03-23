@@ -26,7 +26,7 @@
 #include <TROOT.h>
 #include <TRint.h>
 #include "DCsim.hh"
-#include <fstream.h>
+#include <fstream>
 #include "Plotting.hh"
 #include <TMath.h>
 #include "TRandom3.h"
