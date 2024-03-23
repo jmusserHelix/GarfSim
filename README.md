@@ -3,7 +3,9 @@
 You will need environment variables defined as shown here.
 
 export DCsim_HOME=/home/jmusser/gitrepo/GarfSim/DCSim
+
 export GARFIELD_HOME=/home/jmusser/gitrepo/Garfield
+
 export GARFIELD_IONDATA=/home/jmusser/gitrepo/Garfield/Data/IonMobility_CO2+_CO2.txt
 
 
