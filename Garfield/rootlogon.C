@@ -2,7 +2,7 @@
 {
   gROOT->ProcessLine(".x crestrootstyle.C");
   TFile noisefile("NoiseStudy.root");
-  TTree * noisetree = noisefile.Get("t");
+  TTree * noisetree = (TTree *)noisefile.Get("t");
   noisetree->UseCurrentStyle();
 
 }

@@ -60,10 +60,10 @@ int main(int argc, char * argv[]) {
  // Set the temperature [K] and pressure [Torr]
   gas->SetTemperature(temperature);
   gas->SetPressure(pressure);
-  gas->SetComposition("co2", 80, "ic4h10", 20);
+  gas->SetComposition("co2", 90, "AR", 10);
 
-  gas->LoadGasFile("co2_80_iso_20.gas");
-  gas->LoadIonMobility("/home/musser/helix/garfield/Data/IonMobility_CO2+_CO2.txt");
+  gas->LoadGasFile("co2_90_AR_10_T273.gas");
+  char * IonData = getenv("GARFIELD_IONDATA") ;
   gas->PrintGas();
 
   ComponentAnalyticField * cmp = new ComponentAnalyticField();
@@ -78,8 +78,8 @@ int main(int argc, char * argv[]) {
   const double vCathode = -10000;
   const double rCathode = 175e-4;
   const double vAnode = 0;
-  const double rAnode = 25e-4;
-  const double vPotential= -1800;
+  const double rAnode = 20e-4;
+  const double vPotential= -2800;
   const double rPotential = 175e-4;
   
   const double anodesep = 0.8;
@@ -201,7 +201,7 @@ std::cout << " wire " << x << " " << y << " " << vPotential << " " << "p" << std
  
       AvalancheMC * driftline = new AvalancheMC();
       driftline->SetDistanceSteps(0.002);
-      driftline->EnableMagneticField();
+      //      driftline->EnableMagneticField();
       driftline->EnableDiffusion();
       driftline->SetSensor(sensor);
       driftline->EnablePlotting(vd);
@@ -209,7 +209,7 @@ std::cout << " wire " << x << " " << y << " " << vPotential << " " << "p" << std
 
       AvalancheMC * driftline_i = new AvalancheMC();
       driftline_i->SetDistanceSteps(0.002);
-      driftline_i->EnableMagneticField();
+      //    driftline_i->EnableMagneticField();
       driftline_i->SetSensor(sensor);
       //      driftline_i->EnablePlotting(vd);
       driftline_i->EnableSignalCalculation();

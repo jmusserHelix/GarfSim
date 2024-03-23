@@ -1,8 +1,8 @@
-OBJDIR  = $(GARFIELD_HOME)/Object
+OBJDIR  = $(GARFIELD_HOME)/build/Object
 SRCDIR  = $(GARFIELD_HOME)/Source
-INCDIR  = $(GARFIELD_HOME)/Include
+INCDIR  = $(GARFIELD_HOME)/install/include/Garfield
 HEEDDIR = $(GARFIELD_HOME)/Heed
-LIBDIR  = $(GARFIELD_HOME)/Library
+LIBDIR  = $(GARFIELD_HOME)/install/lib64
 DCsimINCDIR  = $(DCsim_HOME)/Include
 DCsimLIBDIR  = $(DCsim_HOME)/Library
 
@@ -29,7 +29,7 @@ LDLIBS +=  -lGeom
 
 garfroot: garfroot.C
 	$(CXX) $(CXXFLAGS) -o $@ $^  $(LDLIBS)
-garfroottest: garfroottest.C
+MakeGasFile: MakeGasFile.C
 	$(CXX) $(CXXFLAGS) -o $@ $^  $(LDLIBS)
 jet: jet.C
 	$(CXX) $(CXXFLAGS) -o $@ $^  $(LDLIBS)
